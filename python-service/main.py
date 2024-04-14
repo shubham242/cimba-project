@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from openai import OpenAI
 
 app = FastAPI()
-client = OpenAI()
+client = OpenAI(api_key='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')
 
 class TextRequest(BaseModel):
     text: str
