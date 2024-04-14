@@ -20,9 +20,11 @@ object ScalaService extends App {
       path("summarize") {
         post {
           entity(as[String]) { websiteUrl =>
+            println(websiteUrl)
             implicit val formats: DefaultFormats.type = DefaultFormats
             val json = parse(websiteUrl)
             val url = (json \ "websiteUrl").values.toString
+            println(url)
             complete {
               HttpResponse(
                 entity = HttpEntity(ContentType(MediaTypes.`application/json`), summarizeAndLog(url))

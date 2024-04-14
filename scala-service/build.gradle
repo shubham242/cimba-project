@@ -19,11 +19,6 @@ dependencies {
     implementation 'com.typesafe.akka:akka-actor_3:2.8.5'
     implementation 'com.typesafe.akka:akka-stream_3:2.8.5'
 
-
-    implementation libs.guava
-
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api libs.commons.math3
 }
 java {
     toolchain {

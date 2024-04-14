@@ -1,10 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from openai import OpenAI
-import os
 
-key = os.environ.get('OPENAI_API_KEY')
 app = FastAPI()
+client = OpenAI(api_key='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')
 
 class TextRequest(BaseModel):
     text: str
@@ -12,8 +11,6 @@ class TextRequest(BaseModel):
 @app.post("/summarize/")
 async def summarize_text(request: TextRequest):
     try:
-        client = OpenAI(api_key=key)
-        print(request.text)
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{
